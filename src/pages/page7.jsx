@@ -1,15 +1,12 @@
 import { React, useState } from 'react'
 import "../styles/page7.css";
-import { FaAngleRight, FaAngleLeft, FaLinkedin } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io5";
-import { AnimatePresence, motion } from "framer-motion"
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
 const page5 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
-    const [collectionOut, setcollectionOut] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate();
     const handleClick = () => {
         setAnimateOut(true);
@@ -60,8 +57,8 @@ const page5 = (() => {
             </motion.div>
 
             <div className="page7_tool_box">
-                <div className='icn_1'><img src="/images/Ellipse 54.png" alt="" /></div>
-                <div className='icn_2'><img src="/images/Ellipse 58.png" alt="" /></div>
+                <div className='icn_1'> <a href="https://www.linkedin.com/in/vikas-jangid-014a34281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="/images/Ellipse 54.png" alt=""/></a></div>
+                <div className='icn_2'> <a href="https://github.com/vikas3352"><img src="/images/Ellipse 58.png" alt="" /></a></div>
                     
 
                     

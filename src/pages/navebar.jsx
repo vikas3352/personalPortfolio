@@ -1,7 +1,5 @@
 import { React, useState } from 'react'
 import "../styles/navebar.css";
-import { FaAngleRight } from "react-icons/fa";
-import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 
 
@@ -10,10 +8,7 @@ const home = (() => {
   const [videoPopup, setVideoPopup] = useState({ visible: false, src: null });
     const navigate = useNavigate();
     const handleClick = () => {
-        // setAnimateOut(true);
-        //  
             navigate("/");
-        // }, 500);
     };
 
       const handledocument = () => {
@@ -36,7 +31,6 @@ const home = (() => {
                 <div className='t_2' onClick={handledocument}> Resume</div>
             </div>
        
-
         </div>
          {videoPopup.visible && (
         <div className="document-popup">

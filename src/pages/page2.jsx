@@ -47,8 +47,8 @@ const page2 = (() => {
 
   const [items, setItems] = useState([
     { src: '/images/Screenshot 2025-07-17 at 12.01.50 AM.png', video: '/videos/video1.mp4' },
-    { src: '/images/hospital.jpg', video: '/videos/video2.mp4' },
-    { src: '/images/Screenshot 2025-07-21 at 2.15.04 PM.png', video: '/videos/video3.mp4' },
+    { src: '/images/hospital.jpg', video: '/videos/hospital_management.mp4' },
+    { src: '/images/Screenshot 2025-07-21 at 2.15.04 PM.png', video: '/videos/personal_portfolio.mp4' },
     { src: '/images/student__erp.png', video: '/videos/video4.mp4' },
   ]);
 
