@@ -1,0 +1,131 @@
+* {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.page7_box {
+    display: block;
+    background-color: #363636;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.page7_box-2 {
+    display: flex;
+    width: 1405px;
+    height: 331px;
+    margin-left: 34px;
+    justify-content: space-between;
+}
+
+.page7_box-2 h5 {
+    height: 100px;
+    width: 538px;
+    justify-content: center;
+    margin-top: -100px;
+    font-size: 77px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+
+.page7_box-2-btn-1 {
+    width: 100px;
+    height: 100px;
+    margin-top: 185px;
+    border-radius: 100%;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.page7_box-2-btn-2 {
+    width: 100px;
+    height: 100px;
+    margin-top: 185px;
+    border-radius: 100%;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.page7_hide {
+    opacity: 0;
+}
+
+.page7_btn-content {
+    width: 56px;
+    height: 48px;
+}
+
+.page7_content-page2 {
+    width: 866px;
+    height: 200px;
+    margin-left: 34px;
+}
+
+.page7_content-page2 h5 {
+    height: 79px;
+    width: 607px;
+    margin-top: -15px;
+    font-size: 54px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+}
+
+.page7_content-page2 h3 {
+    height: 55px;
+    width: 866px;
+    font-size: 30px;
+    font-weight: 200;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+}
+
+.page7_content-page2 h3 a {
+    color: #EC704B;
+}
+
+.page7_tool_box {
+    width: 1405px;
+    height: 344px;
+    display: flex;
+    margin-left: 34px;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icn_1 {
+    width: 100px;
+    height: 100px;
+}
+.icn_1 img{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.icn_2{
+    width: 100px;
+    height: 100px;
+}
+.icn_2 img{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
