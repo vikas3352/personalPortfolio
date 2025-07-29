@@ -69,7 +69,7 @@ const page2 = (() => {
 
         <motion.h5
           initial={{ y: -100, opacity: 1 }}
-          animate={{ y: 40, x: isHovered ? -300 : 0, opacity: 1 }}
+          animate={{ y: "5em", x: isHovered ? -300 : 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >WEB Devloper</motion.h5>
 

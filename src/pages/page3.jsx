@@ -57,7 +57,7 @@ const page2 = (() => {
                 <motion.h5
                     initial={{ y: -100, opacity: 1 }}
                     animate={{
-                        y: 268,
+                        y: "5em",
                         opacity: animateOut ? 0 : 1
                     }}
                     transition={{ duration: 1.5 }}
@@ -82,9 +82,9 @@ const page2 = (() => {
             <div className="page3_btn-3"
             >
                 <motion.div className="collection_p"
-                    initial={{ width: 0, height: 0, marginLeft: 704, marginTop: 300 }}
+                    initial={{ width: 0, height: 0, marginLeft: 104, marginTop: 500 }}
                     animate={{
-                        width: collectionOut ? 1408 : 0, height: collectionOut ? 300 : 0, marginLeft: collectionOut ? 34 : 704, marginTop: collectionOut ? 50 : 300,
+                        width: collectionOut ? "auto" : 0, height: collectionOut ? "auto" : 0, marginLeft: collectionOut ? 0 : 104, marginTop: collectionOut ? 50 : 500,
                         // opacity: collectionOut ? 1 : 0
                     }}
                     transition={{ duration: 0.5 }}

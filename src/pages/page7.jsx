@@ -38,7 +38,7 @@ const page5 = (() => {
                 <motion.h5
                     initial={{ y: -100, opacity: 1 }}
                     animate={{
-                        y: 268,
+                        y: "5em",
                         opacity: animateOut ? 0 : 1
                     }}
                     transition={{ duration: 1.5 }}>

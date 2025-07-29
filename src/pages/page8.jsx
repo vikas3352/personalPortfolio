@@ -33,16 +33,18 @@ const page5 = (() => {
                 <motion.h5
                     initial={{ y: -100, opacity: 1 }}
                     animate={{
-                        y: 288,
+                        y: "5em",
                         opacity: animateOut ? 0 : 1
                     }}
                     transition={{ duration: 1.5 }}>
                     Let's Create Something Amazing!                </motion.h5>
             </div>
-
-            <div className="page8_tool_box">
+            <div className="page8_contant">
+                <div className="page8_tool_box">
                     <p>Embark on a visual journey with me. Whether you're looking for stunning designs or cutting-edge web solutions, I'm here to bring your ideas to life. Let's build something extraordinary together!</p>
+                </div>
             </div>
+
 
         </div>
     )
