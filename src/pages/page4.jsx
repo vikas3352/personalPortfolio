@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import "../styles/page4.css";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { IoAddOutline } from "react-icons/io5";
@@ -20,7 +20,16 @@ const page2 = (() => {
         }, 1000);
     };
 
-
+    function useWindowSize() {
+        const [width, setWidth] = useState(window.innerWidth);
+        useEffect(() => {
+            const handleResize = () => setWidth(window.innerWidth);
+            window.addEventListener("resize", handleResize);
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
+        return width;
+    }
+    const width = useWindowSize();
     const nextClick = () => {
         setAnimateOut(true);
         setTimeout(() => {
@@ -84,13 +93,13 @@ const page2 = (() => {
                     transition={{ duration: 0.5 }}>
                     <RxCross2 className='fi_btn' />
                 </motion.button>
-                <div className="media">
+                {width <= 768 && width > 480 && (<div className="media">
                     <motion.div className="media1"
                         animate={{
                             marginLeft: collectionOut ? 238 : 119, marginTop: collectionOut ? 64 : 122,
                         }}
                         transition={{ duration: 0.5 }}
-                        
+
                     ><img src="images/Ellipse be.png" alt="" /></motion.div>
                     <motion.div className="media2"
                         animate={{
@@ -116,7 +125,75 @@ const page2 = (() => {
                         }}
                         transition={{ duration: 0.5 }}
                     ><img src="images/Ellipse f.png" alt="" /></motion.div>
-                </div>
+                </div>)}
+                {width < 480 && (<div className="media">
+                    <motion.div className="media1"
+                        animate={{
+                            marginLeft: collectionOut ? 238 : 130, marginTop: collectionOut ? 64 : 132,
+                        }}
+                        transition={{ duration: 0.5 }}
+
+                    ><img src="images/Ellipse be.png" alt="" /></motion.div>
+                    <motion.div className="media2"
+                        animate={{
+                            marginLeft: collectionOut ? 0 : 130, marginTop: collectionOut ? 64 : 132,
+                        }}
+                        transition={{ duration: 0.5 }}
+                    ><img src="images/Ellipse i.png" alt="" /></motion.div>
+                    <motion.div className="media3"
+                        animate={{
+                            marginLeft: collectionOut ? 119 : 130, marginTop: collectionOut ? 0 : 132,
+                        }}
+                        transition={{ duration: 0.5 }}
+                    ><img src="images/Ellipse y.png" alt="" /></motion.div>
+                    <motion.div className="media4"
+                        animate={{
+                            marginLeft: collectionOut ? 32 : 130, marginTop: collectionOut ? 213 : 132,
+                        }}
+                        transition={{ duration: 0.5 }}
+                    ><img src="images/Ellipse net.png" alt="" /></motion.div>
+                    <motion.div className="media5"
+                        animate={{
+                            marginLeft: collectionOut ? 206 : 130, marginTop: collectionOut ? 213 : 132,
+                        }}
+                        transition={{ duration: 0.5 }}
+                    ><img src="images/Ellipse f.png" alt="" /></motion.div>
+                </div>)}
+                {width > 768 && (
+                    <div className="media">
+                        <motion.div className="media1"
+                            animate={{
+                                marginLeft: collectionOut ? 238 : 119, marginTop: collectionOut ? 64 : 122,
+                            }}
+                            transition={{ duration: 0.5 }}
+
+                        ><img src="images/Ellipse be.png" alt="" /></motion.div>
+                        <motion.div className="media2"
+                            animate={{
+                                marginLeft: collectionOut ? 0 : 119, marginTop: collectionOut ? 64 : 122,
+                            }}
+                            transition={{ duration: 0.5 }}
+                        ><img src="images/Ellipse i.png" alt="" /></motion.div>
+                        <motion.div className="media3"
+                            animate={{
+                                marginLeft: collectionOut ? 119 : 119, marginTop: collectionOut ? 0 : 122,
+                            }}
+                            transition={{ duration: 0.5 }}
+                        ><img src="images/Ellipse y.png" alt="" /></motion.div>
+                        <motion.div className="media4"
+                            animate={{
+                                marginLeft: collectionOut ? 32 : 119, marginTop: collectionOut ? 213 : 122,
+                            }}
+                            transition={{ duration: 0.5 }}
+                        ><img src="images/Ellipse net.png" alt="" /></motion.div>
+                        <motion.div className="media5"
+                            animate={{
+                                marginLeft: collectionOut ? 206 : 119, marginTop: collectionOut ? 213 : 122,
+                            }}
+                            transition={{ duration: 0.5 }}
+                        ><img src="images/Ellipse f.png" alt="" /></motion.div>
+                    </div>
+                )}
             </div>
         </div>
     )

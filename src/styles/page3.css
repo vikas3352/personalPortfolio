@@ -101,7 +101,7 @@ body {
     margin-top: 0.5rem;
 }
 
-.page3_btn-3 button {
+button.main-btn-page3 {
     position: absolute;
     width: 181px;
     height: 408px;
@@ -163,17 +163,116 @@ body {
     border-radius: 25px;
 }
 
-.collection_1 button,
-.collection_2 button,
-.collection_3 button {
-    top: 30%;
-    left: 45%;
-    transform: translate(-30%, -45%);
-    width: 7vw;
-    height: 7vw;
+button.play-btn-1,
+button.play-btn-2,
+button.play-btn-3 {
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
     border-radius: 50%;
     background: rgba(109, 107, 107, 0.4);
     border: none;
     font-size: 1.9vw;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    button.main-btn-page3 {
+    position: absolute;
+    width: 181px;
+    height: 408px;
+    max-height: 408px;
+    background-color: #A57FC0;
+    border-radius: 100vw;
+    border: none;
+    box-shadow: 22px -4px 8.4px -1px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 36%;
+}
+
+  .page3_box-2 h5 {
+    font-size: 5vw;
+  }
+
+  .page3_box-2-btn-1,
+  .page3_box-2-btn-2 {
+    width: 10vw;
+    height: 10vw;
+  }
+}
+@media (max-width: 480px) {
+
+    button.main-btn-page3 {
+    position: absolute;
+    width: 150px;
+    height: 350px;
+    max-height: 408px;
+    background-color: #A57FC0;
+    border-radius: 100vw;
+    border: none;
+    box-shadow: 22px -4px 8.4px -1px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 60%;
+}
+.page3_fi_btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    box-shadow: 8px 3px 4px 0px #a57fc0;
+    border-radius: 100%;
+    margin-bottom: 246px;
+}
+    .page3_box-2{
+        margin-top: 8em;
+    }
+  .page3_box-2 h5 {
+    font-size: 7vw;
+  }
+  .page3_content-page2{
+    margin-top: 1.5em;
+  }
+.page3_content-page2 h5{
+    font-size: 7vw;
+}
+.page3_content-page2 h3{
+    font-size: 6vw;
+}
+
+.collection_1,
+.collection_2,
+.collection_3 {
+    width: 40%;
+    height: auto;
+    aspect-ratio: 4/3;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+    .page3_box-2-btn-1 {
+        width: 50px;
+        height: 50px;
+        margin-left: 5px;
+    }
+
+    .page3_box-2-btn-2 {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+  button.play-btn-1,
+button.play-btn-2,
+button.play-btn-3 {
+    width: 20vw;
+    height: 20vw;
+    font-size: 6.9vw;
+    justify-content: center;
+    align-items: center;
+}
 }

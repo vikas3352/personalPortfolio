@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState ,useEffect} from 'react'
 import "../styles/page3.css";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { FiZap } from "react-icons/fi";
@@ -19,6 +19,17 @@ const page2 = (() => {
             navigate("/Page2");
         }, 1000);
     };
+
+      function useWindowSize() {
+        const [width, setWidth] = useState(window.innerWidth);
+        useEffect(() => {
+          const handleResize = () => setWidth(window.innerWidth);
+          window.addEventListener("resize", handleResize);
+          return () => window.removeEventListener("resize", handleResize);
+        }, []);
+        return width;
+      }
+      const width = useWindowSize();
     const nextClick = () => {
         setAnimateOut(true);
         setTimeout(() => {
@@ -53,7 +64,28 @@ const page2 = (() => {
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
 
+        { width <= 768 && width > 480 &&(
+                            <motion.h5
+                    initial={{ y: -100, opacity: 1 }}
+                    animate={{
+                        y: "5em",
+                        opacity: animateOut ? 0 : 1
+                    }}
+                    transition={{ duration: 1.5 }}
+                >Frontend Devloper</motion.h5>
+        )}
+{width < 480 && (
+                    <motion.h5
+                    initial={{ y: -100, opacity: 1 }}
+                    animate={{
+                        y: "5.3em",
+                        opacity: animateOut ? 0 : 1
+                    }}
+                    transition={{ duration: 1.5 }}
+                >Frontend Devloper</motion.h5>
+)}
 
+{width > 768 && (
                 <motion.h5
                     initial={{ y: -100, opacity: 1 }}
                     animate={{
@@ -62,7 +94,7 @@ const page2 = (() => {
                     }}
                     transition={{ duration: 1.5 }}
                 >Frontend Devloper</motion.h5>
-
+                )}
 
                 <motion.button className="page3_box-2-btn-2" initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
@@ -82,20 +114,19 @@ const page2 = (() => {
             <div className="page3_btn-3"
             >
                 <motion.div className="collection_p"
-                    initial={{ width: 0, height: 0, marginLeft: 104, marginTop: 500 }}
+                    initial={{ marginLeft: 104, marginTop: 500 }}
                     animate={{
-                        width: collectionOut ? "auto" : 0, height: collectionOut ? "auto" : 0, marginLeft: collectionOut ? 0 : 104, marginTop: collectionOut ? 50 : 500,
+                        width: collectionOut ? "auto" : 0, height: collectionOut ? 233 : 0, marginLeft: collectionOut ? 0 : 104, marginTop: collectionOut ? 5 : 500,
                         // opacity: collectionOut ? 1 : 0
                     }}
                     transition={{ duration: 0.5 }}
-
                 >
                     <div className="collection_1"><img src="images/nike_image.png" alt="" /><button className='play-btn-1' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/nike_video.mp4'); }}>▶</button></div>
                     <div className="collection_2"><img src="images/Screenshot 2025-07-22 at 4.25.44 PM.png" alt="" /><button className='play-btn-2' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/login_video.mov'); }}>▶</button></div>
                     <div className="collection_3"><img src="images/Screenshot 2025-07-21 at 1.36.59 PM.png" alt="" /><button className='play-btn-3' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/cal_video.mov'); }}>▶</button></div>
                 </motion.div>
 
-                <button onClick={handleCollection}><img src="/images/Subtract-2.png" alt="" className='page3_fi_btn' /></button>
+                <button className="main-btn-page3"onClick={handleCollection}><img src="/images/Subtract-2.png" alt="" className='page3_fi_btn' /></button>
             </div>
             {videoPopup.visible && (
                 <div className="video-popup">

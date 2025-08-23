@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import "../styles/page2.css";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion"
@@ -12,6 +12,17 @@ const page2 = (() => {
   const [isHovered, setIsHovered] = useState(false);
   const [videoPopup, setVideoPopup] = useState({ visible: false, src: null });
   const navigate = useNavigate();
+
+  function useWindowSize() {
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return width;
+  }
+  const width = useWindowSize();
 
   const handleClick = () => {
     setAnimateOut(true);
@@ -67,11 +78,28 @@ const page2 = (() => {
           <FaAngleLeft className='btn-content' />
         </motion.button>
 
-        <motion.h5
-          initial={{ y: -100, opacity: 1 }}
-          animate={{ y: "5em", x: isHovered ? -300 : 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >WEB Devloper</motion.h5>
+
+        { width <= 768 && width > 480 &&(
+          <motion.h5
+            initial={{ y: -100, opacity: 1 }}
+            animate={{ y: "0.2em", x: isHovered ? -300 : 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >WEB Devloper</motion.h5>
+        )}
+        {width < 480 && (
+          <motion.h5
+            initial={{ y: -100, opacity: 1 }}
+            animate={{ y: "0.5em", x: isHovered ? -300 : 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >WEB Devloper</motion.h5>
+        )}
+        {width > 768 && (
+          <motion.h5
+            initial={{ y: -100, opacity: 1 }}
+            animate={{ y: "5em", x: isHovered ? -300 : 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >WEB Devloper</motion.h5>
+        )}
 
         <motion.button className="box-2-btn-2"
           initial={{ opacity: 0 }}
@@ -88,23 +116,60 @@ const page2 = (() => {
         <h5>Captivating Projects</h5>
         <h3>Explore a collection of projects that tell unique design and development.</h3>
       </motion.div>
+      {width > 768 && (
+        <motion.div className="collection"
+          initial={{ y: 400, opacity: 1 }}
+          animate={{ y: isHovered ? -120 : 0, x: isHovered ? 120 : 0, scale: isHovered ? 1.3 : 1, opacity: 1 }}
+          transition={{ duration: 1 }}>
 
-      <motion.div className="collection"
-        initial={{ y: 400, opacity: 1 }}
-        animate={{ y: isHovered ? -120 : 0, x: isHovered ? 120 : 0, scale: isHovered ? 1.3 : 1, opacity: 1 }}
-        transition={{ duration: 1 }}>
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              className={`collection${index + 1}`}
+              onClick={() => handleCollectionClick(index)}
+              style={{ position: 'absolute', cursor: 'pointer', zIndex: 10 - index }}>
+              <img src={item.src} alt="" />
+              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+      {width <= 768 && width > 480 && (
+        <motion.div className="collection"
+          initial={{ y: 400, opacity: 1 }}
+          animate={{ y: 15, opacity: 1 }}
+          transition={{ duration: 1 }}>
 
-        {items.map((item, index) => (
-          <motion.div
-            key={index}
-            className={`collection${index + 1}`}
-            onClick={() => handleCollectionClick(index)}
-            style={{ position: 'absolute', cursor: 'pointer', zIndex: 10 - index }}>
-            <img src={item.src} alt="" />
-            <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
-          </motion.div>
-        ))}
-      </motion.div>
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              className={`collection${index + 1}`}
+              // onClick={() => handleCollectionClick(index)}
+              style={{  cursor: 'pointer',}}>
+              <img src={item.src} alt="" />
+              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+      {width < 480 && (
+        <motion.div className="collection"
+          initial={{ y: 400, opacity: 1 }}
+          animate={{ y: 15, opacity: 1 }}
+          transition={{ duration: 1 }}>
+
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              className={`collection${index + 1}`}
+              // onClick={() => handleCollectionClick(index)}
+              style={{  cursor: 'pointer',}}>
+              <img src={item.src} alt="" />
+              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
 
       <div className={`box-1 ${isHovered ? 'hovered' : ''}`}
         onMouseEnter={() => setIsHovered(true)}

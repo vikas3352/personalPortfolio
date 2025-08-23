@@ -96,3 +96,46 @@ body {
     font-weight: 200;
     text-align: justify;
 }
+
+@media (max-width: 480px) {
+    .page8_box-2 {
+        margin-top: 8em;
+    }
+
+    .page8_box-2 h5 {
+        font-size: 7vw;
+    }
+
+    .page8_content-page2 h5 {
+        font-size: 8vw;
+    }
+
+    .page8_content-page2 h3 {
+        font-size: 5vw;
+    }
+
+    .page8_box-2-btn-1 {
+        width: 50px;
+        height: 50px;
+        margin-left: 5px;
+    }
+
+    .page8_box-2-btn-2 {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+    .page7_content-page2 {
+        margin-top: 1.5rem;
+    }
+
+    .page8_tool_box {
+        margin-top: 2rem;
+
+    }
+    .page8_tool_box p{
+        font-size: 1em;
+    }
+    
+}
