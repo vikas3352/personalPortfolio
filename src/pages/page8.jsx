@@ -1,15 +1,13 @@
 import { React, useState } from 'react'
 import "../styles/page8.css";
-import { FaAngleRight, FaAngleLeft, FaLinkedin } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io5";
-import { AnimatePresence, motion } from "framer-motion"
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
-const page5 = (() => {
+
+const page8 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
-    const [collectionOut, setcollectionOut] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
     const navigate = useNavigate();
     const handleClick = () => {
         setAnimateOut(true);
@@ -25,19 +23,21 @@ const page5 = (() => {
             </div>
             <div className="page8_box-2">
                 <motion.button className="page8_box-2-btn-1"
+                    aria-label="Previous Page"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={handleClick}>
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
                 <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
+                    initial={{ y: -50, opacity: 0 }}
                     animate={{
-                        y: "5em",
+                        y: 0,
                         opacity: animateOut ? 0 : 1
                     }}
-                    transition={{ duration: 1.5 }}>
-                    Let's Create Something Amazing!                </motion.h5>
+                    transition={{ duration: 1 }}>
+                    Let's Create Something Amazing!
+                </motion.h5>
             </div>
             <div className="page8_contant">
                 <div className="page8_tool_box">
@@ -45,9 +45,8 @@ const page5 = (() => {
                 </div>
             </div>
 
-
         </div>
     )
 })
 
-export default page5
+export default page8

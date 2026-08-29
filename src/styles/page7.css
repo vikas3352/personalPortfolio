@@ -14,6 +14,10 @@ body {
 
 .nav-side {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .page7_box {
@@ -22,39 +26,35 @@ body {
     overflow: hidden;
     background-color: #363636;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .page7_box-2 {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1400px;
-    margin-top: 10%;
+    margin-top: clamp(70px, 10vh, 110px);
+    padding: 0 4%;
     margin-left: auto;
     margin-right: auto;
     height: auto;
 }
 
-
 .page7_box-2 h5 {
-    font-size: 4.5vw;
+    font-size: clamp(1.8rem, 4.5vw, 4.5rem);
     font-weight: bold;
     color: #ffffff;
-    flex: 1 1 60%;
-    align-self: center;
-    margin-top: -9.5em;
-    height: auto;
-    width: auto;
     text-align: center;
+    flex: 1;
 }
-
 
 .page7_box-2-btn-1,
 .page7_box-2-btn-2 {
-    width: 6vw;
-    height: 6vw;
+    width: clamp(45px, 5vw, 70px);
+    height: clamp(45px, 5vw, 70px);
     border-radius: 50%;
     border: none;
     display: flex;
@@ -62,131 +62,99 @@ body {
     justify-content: center;
     cursor: pointer;
     opacity: 1;
-    margin-top: 2rem;
     background-color: #fff;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.page7_box-2-btn-1:hover,
+.page7_box-2-btn-2:hover {
+    transform: scale(1.05);
 }
 
 .page7_hide {
     opacity: 0;
 }
 
-
 .page7_content-page2 {
-    width: auto;
+    width: 90%;
+    max-width: 866px;
+    margin-top: clamp(1.5rem, 3vh, 3rem);
+    margin-left: 5%;
+    position: relative;
+    z-index: 2;
     height: auto;
-    margin-top: 4rem;
-    margin-left: 2rem;
-    display: flexbox;
-    align-items: center;
-    align-content: center;
 }
 
 .page7_content-page2 h5 {
-    width: auto;
-    height: auto;
-    font-size: 4vw;
+    font-size: clamp(1.8rem, 4vw, 4rem);
     font-weight: bold;
     color: #ffffff;
 }
 
 .page7_content-page2 h3 {
-    width: auto;
-    height: auto;
-    font-size: 1.5vw;
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
     font-weight: 200;
     color: #ffffff;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
+    line-height: 1.5;
 }
 
 .page7_content-page2 h3 a {
     color: #EC704B;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.page7_content-page2 h3 a:hover {
+    color: #F5F378;
 }
 
 .page7_tool_box {
-    height: 30vh;
-    width: 100vw;
-    position: relative;
+    margin-top: clamp(2rem, 5vh, 4rem);
+    width: 100%;
     display: flex;
-    gap: 10px;
+    gap: clamp(20px, 4vw, 50px);
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
-.icn_1 {
-    width: 6vw;
-    height: 6vw;
+.icn_1, .icn_2 {
+    width: clamp(50px, 6vw, 85px);
+    height: clamp(50px, 6vw, 85px);
+    transition: transform 0.2s ease;
 }
 
-.icn_1 img {
-    width: 6vw;
-    height: 6vw;
+.icn_1:hover, .icn_2:hover {
+    transform: scale(1.1);
 }
 
-.icn_2 {
-    width: 6vw;
-    height: 6vw;
-}
-
-.icn_2 img {
-    width: 6vw;
-    height: 6vw;
+.icn_1 img, .icn_2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     cursor: pointer;
+}
+
+/* 📱 Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .page7_box-2 {
+        margin-top: 80px;
+        padding: 0 3%;
+    }
+
+    .page7_content-page2 {
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
     .page7_box-2 {
-        margin-top: 8em;
+        margin-top: 75px;
     }
-
-    .page7_box-2 h5 {
-        font-size: 7vw;
-    }
-
-    .page7_content-page2 h5 {
-        font-size: 8vw;
-    }
-
-    .page7_content-page2 h3 {
-        font-size: 5vw;
-    }
-
-    .page7_box-2-btn-1 {
-        width: 50px;
-        height: 50px;
-        margin-left: 5px;
-    }
-
-    .page7_box-2-btn-2 {
-        width: 50px;
-        height: 50px;
-        margin-right: 5px;
-    }
-
-    .page7_content-page2 {
-        margin-top: 1.5rem;
-    }
-
-    .page7_tool_box {
-        margin-top: 2rem;
-
-    }
-
-    .icn_1 {
-        width: 20vw;
-        height: 20vw;
-    }
-    .icn_1 img{
-        width: 20vw;
-        height: 20vw;
-    }
-    .icn_2 {
-        width: 20vw;
-        height: 20vw;
-    }
-    .icn_2 img{
-        width: 20vw;
-        height: 20vw;
-    }
-
 }

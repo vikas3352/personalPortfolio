@@ -4,7 +4,8 @@ import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
-const page5 = (() => {
+
+const page7 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
     const navigate = useNavigate();
@@ -30,21 +31,22 @@ const page5 = (() => {
             </div>
             <div className="page7_box-2">
                 <motion.button className="page7_box-2-btn-1"
+                    aria-label="Previous Page"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={handleClick}>
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
                 <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
+                    initial={{ y: -50, opacity: 0 }}
                     animate={{
-                        y: "5em",
+                        y: 0,
                         opacity: animateOut ? 0 : 1
                     }}
-                    transition={{ duration: 1.5 }}>
+                    transition={{ duration: 1 }}>
                     Let’s Connect
                 </motion.h5>
-                <motion.button className="page7_box-2-btn-2" initial={{ opacity: 0 }}
+                <motion.button className="page7_box-2-btn-2" aria-label="Next Page" initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={nextClick} ><FaAngleRight className='btn-content' /></motion.button>
             </div>
@@ -57,15 +59,12 @@ const page5 = (() => {
             </motion.div>
 
             <div className="page7_tool_box">
-                <div className='icn_1'> <a href="https://www.linkedin.com/in/vikas-jangid-014a34281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="/images/Ellipse 54.png" alt=""/></a></div>
-                <div className='icn_2'> <a href="https://github.com/vikas3352"><img src="/images/Ellipse 58.png" alt="" /></a></div>
-                    
-
-                    
+                <div className='icn_1'> <a href="https://www.linkedin.com/in/vikas-jangid-014a34281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><img src="/images/Ellipse 54.png" alt="LinkedIn" width="65" height="65"/></a></div>
+                <div className='icn_2'> <a href="https://github.com/vikas3352" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><img src="/images/Ellipse 58.png" alt="GitHub" width="65" height="65" /></a></div>
             </div>
 
         </div>
     )
 })
 
-export default page5
+export default page7

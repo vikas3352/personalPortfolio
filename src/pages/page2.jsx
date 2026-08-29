@@ -57,9 +57,9 @@ const page2 = (() => {
   };
 
   const [items, setItems] = useState([
-    { src: '/images/Screenshot 2025-07-17 at 12.01.50 AM.png', video: '/videos/video1.mp4' },
+    { src: '/images/nike_image.png', video: '/videos/video1.mp4' },
     { src: '/images/hospital.jpg', video: '/videos/hospital_management.mp4' },
-    { src: '/images/Screenshot 2025-07-21 at 2.15.04 PM.png', video: '/videos/personal_portfolio.mp4' },
+    { src: '/images/backend.jpeg', video: '/videos/personal_portfolio.mp4' },
     { src: '/images/student__erp.png', video: '/videos/video4.mp4' },
   ]);
 
@@ -71,6 +71,7 @@ const page2 = (() => {
 
       <div className="box-2">
         <motion.button className="box-2-btn-1"
+          aria-label="Previous Page"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 0 : 1 }}
           transition={{ duration: 0.5 }}
@@ -78,30 +79,14 @@ const page2 = (() => {
           <FaAngleLeft className='btn-content' />
         </motion.button>
 
-
-        { width <= 768 && width > 480 &&(
-          <motion.h5
-            initial={{ y: -100, opacity: 1 }}
-            animate={{ y: "0.2em", x: isHovered ? -300 : 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >WEB Devloper</motion.h5>
-        )}
-        {width < 480 && (
-          <motion.h5
-            initial={{ y: -100, opacity: 1 }}
-            animate={{ y: "0.5em", x: isHovered ? -300 : 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >WEB Devloper</motion.h5>
-        )}
-        {width > 768 && (
-          <motion.h5
-            initial={{ y: -100, opacity: 1 }}
-            animate={{ y: "5em", x: isHovered ? -300 : 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >WEB Devloper</motion.h5>
-        )}
+        <motion.h5
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, x: isHovered ? -300 : 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >WEB Developer</motion.h5>
 
         <motion.button className="box-2-btn-2"
+          aria-label="Next Page"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 0 : 1 }}
           transition={{ duration: 0.5 }}
@@ -128,44 +113,26 @@ const page2 = (() => {
               className={`collection${index + 1}`}
               onClick={() => handleCollectionClick(index)}
               style={{ position: 'absolute', cursor: 'pointer', zIndex: 10 - index }}>
-              <img src={item.src} alt="" />
-              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+              <img src={item.src} alt="Project Preview" width="300" height="300" />
+              <button className='play-btn' aria-label="Play Project Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
             </motion.div>
           ))}
         </motion.div>
       )}
-      {width <= 768 && width > 480 && (
+      {width <= 768 && (
         <motion.div className="collection"
-          initial={{ y: 400, opacity: 1 }}
-          animate={{ y: 15, opacity: 1 }}
+          initial={{ y: 200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}>
 
           {items.map((item, index) => (
             <motion.div
               key={index}
               className={`collection${index + 1}`}
-              // onClick={() => handleCollectionClick(index)}
-              style={{  cursor: 'pointer',}}>
-              <img src={item.src} alt="" />
-              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
-      {width < 480 && (
-        <motion.div className="collection"
-          initial={{ y: 400, opacity: 1 }}
-          animate={{ y: 15, opacity: 1 }}
-          transition={{ duration: 1 }}>
-
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              className={`collection${index + 1}`}
-              // onClick={() => handleCollectionClick(index)}
-              style={{  cursor: 'pointer',}}>
-              <img src={item.src} alt="" />
-              <button className='play-btn' onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+              onClick={() => handleCollectionClick(index)}
+              style={{ cursor: 'pointer' }}>
+              <img src={item.src} alt="Project Preview" width="300" height="300" />
+              <button className='play-btn' aria-label="Play Project Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
             </motion.div>
           ))}
         </motion.div>
@@ -174,7 +141,7 @@ const page2 = (() => {
       <div className={`box-1 ${isHovered ? 'hovered' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}>
-        <motion.img src="/images/Saly-12.png" alt=""
+        <motion.img src="/images/Saly-12.webp" alt="3D Graphic Illustration" width="1000" height="1000"
           initial={{ scale: 1, x: 0, opacity: 1 }}
           animate={animateOut ? { scale: 2, x: -500, opacity: 0 } : isHovered ? { x: -120, y: -220 } : {}}
           transition={{ duration: 1 }} />
@@ -183,7 +150,7 @@ const page2 = (() => {
       {videoPopup.visible && (
         <div className="video-popup">
           <div className="popup-content">
-            <button className="close-btn" onClick={closePopup}>X</button>
+            <button className="close-btn" aria-label="Close Video" onClick={closePopup}>X</button>
             <video width="100%" height="auto" controls autoPlay>
               <source src={videoPopup.src} type="video/mp4" />
               Your browser does not support the video tag.

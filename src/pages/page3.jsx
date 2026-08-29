@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
 
-const page2 = (() => {
+const page3 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
     const [collectionOut, setcollectionOut] = useState(false);
@@ -38,9 +38,6 @@ const page2 = (() => {
     };
     const handleCollection = () => {
         setcollectionOut(prev => !prev);
-        // setTimeout(() => {
-        //   navigate("/Page2");
-        // }, 1000);
     };
 
     const handleVideoPlay = (src) => {
@@ -58,45 +55,23 @@ const page2 = (() => {
             </div>
             <div className="page3_box-2">
                 <motion.button className="page3_box-2-btn-1"
+                    aria-label="Previous Page"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={handleClick}>
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
 
-        { width <= 768 && width > 480 &&(
-                            <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
-                    animate={{
-                        y: "5em",
-                        opacity: animateOut ? 0 : 1
-                    }}
-                    transition={{ duration: 1.5 }}
-                >Frontend Devloper</motion.h5>
-        )}
-{width < 480 && (
-                    <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
-                    animate={{
-                        y: "5.3em",
-                        opacity: animateOut ? 0 : 1
-                    }}
-                    transition={{ duration: 1.5 }}
-                >Frontend Devloper</motion.h5>
-)}
-
-{width > 768 && (
                 <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
+                    initial={{ y: -50, opacity: 0 }}
                     animate={{
-                        y: "5em",
+                        y: 0,
                         opacity: animateOut ? 0 : 1
                     }}
-                    transition={{ duration: 1.5 }}
-                >Frontend Devloper</motion.h5>
-                )}
+                    transition={{ duration: 1 }}
+                >Web Development</motion.h5>
 
-                <motion.button className="page3_box-2-btn-2" initial={{ opacity: 0 }}
+                <motion.button className="page3_box-2-btn-2" aria-label="Next Page" initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={nextClick} ><FaAngleRight className='btn-content' /></motion.button>
 
@@ -105,33 +80,45 @@ const page2 = (() => {
             <motion.div className='page3_content-page2'
                 animate={{ opacity: animateOut ? 0 : 1 }}
                 transition={{ duration: 1 }}
-
             >
-                <h5>Captivating UI-UX Designe</h5>
-                <h3>Explore a collection of UI-UX Designes.</h3>
+                <h5>Front-end Marvels</h5>
+                <h3>Experience seamless user interfaces created with cutting-edge technologies.</h3>
             </motion.div>
 
-            <div className="page3_btn-3"
-            >
+            <div className="page3_btn-3">
+                {!collectionOut && (
+                    <motion.div className="click-indicator"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}>
+                        <div className="arrow-wrapper">
+                            <div className="arrow-stem"></div>
+                            <div className="arrow-head">↓</div>
+                        </div>
+                        <span className="click-text">Click the button</span>
+                    </motion.div>
+                )}
+
                 <motion.div className="collection_p"
-                    initial={{ marginLeft: 104, marginTop: 500 }}
+                    initial={{ opacity: 0 }}
                     animate={{
-                        width: collectionOut ? "auto" : 0, height: collectionOut ? 233 : 0, marginLeft: collectionOut ? 0 : 104, marginTop: collectionOut ? 5 : 500,
-                        // opacity: collectionOut ? 1 : 0
+                        width: collectionOut ? "90%" : "0%", height: collectionOut ? "auto" : 0,
+                        opacity: collectionOut ? 1 : 0
                     }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="collection_1"><img src="images/nike_image.png" alt="" /><button className='play-btn-1' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/nike_video.mp4'); }}>▶</button></div>
-                    <div className="collection_2"><img src="images/Screenshot 2025-07-22 at 4.25.44 PM.png" alt="" /><button className='play-btn-2' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/login_video.mov'); }}>▶</button></div>
-                    <div className="collection_3"><img src="images/Screenshot 2025-07-21 at 1.36.59 PM.png" alt="" /><button className='play-btn-3' onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/cal_video.mov'); }}>▶</button></div>
+                    <div className="collection_1"><img src="/images/nike_image.png" alt="Nike Clone Project" width="360" height="270" /><button className='play-btn-1' aria-label="Play Nike Clone Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/nike_video.mp4'); }}>▶</button></div>
+                    <div className="collection_2"><img src="/images/hospital.jpg" alt="Hospital Management Project" width="360" height="270" /><button className='play-btn-2' aria-label="Play Hospital Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/login_video.mov'); }}>▶</button></div>
+                    <div className="collection_3"><img src="/images/student__erp.png" alt="Student ERP Project" width="360" height="270" /><button className='play-btn-3' aria-label="Play Student ERP Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay('/videos/cal_video.mov'); }}>▶</button></div>
                 </motion.div>
 
-                <button className="main-btn-page3"onClick={handleCollection}><img src="/images/Subtract-2.png" alt="" className='page3_fi_btn' /></button>
+                <button className="main-btn-page3" aria-label="Expand project collection" onClick={handleCollection}><img src="/images/Subtract-2.png" alt="Lightning Icon" width="85" height="85" className='page3_fi_btn' /></button>
             </div>
             {videoPopup.visible && (
                 <div className="video-popup">
                     <div className="popup-content">
-                        <button className="close-btn" onClick={closePopup}>X</button>
+                        <button className="close-btn" aria-label="Close Video" onClick={closePopup}>X</button>
                         <video width="100%" height="auto" controls autoPlay>
                             <source src={videoPopup.src} type="video/mp4" />
                             Your browser does not support the video tag.
@@ -144,4 +131,4 @@ const page2 = (() => {
     )
 })
 
-export default page2
+export default page3

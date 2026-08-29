@@ -14,6 +14,10 @@ body {
 
 .nav-side {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .page4_box {
@@ -22,39 +26,35 @@ body {
     overflow: hidden;
     background-color: #363636;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .page4_box-2 {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1400px;
-    margin-top: 10%;
+    margin-top: clamp(70px, 10vh, 110px);
+    padding: 0 4%;
     margin-left: auto;
     margin-right: auto;
     height: auto;
 }
 
 .page4_box-2 h5 {
-    font-size: 4.5vw;
+    font-size: clamp(1.8rem, 4.5vw, 4.5rem);
     font-weight: bold;
     color: #ffffff;
-    flex: 1 1 60%;
-    align-self: center;
-    margin-top: -9.5em;
-    height: auto;
-    width: auto;
     text-align: center;
+    flex: 1;
 }
-
-
 
 .page4_box-2-btn-1,
 .page4_box-2-btn-2 {
-    width: 6vw;
-    height: 6vw;
+    width: clamp(45px, 5vw, 70px);
+    height: clamp(45px, 5vw, 70px);
     border-radius: 50%;
     border: none;
     display: flex;
@@ -62,9 +62,14 @@ body {
     justify-content: center;
     cursor: pointer;
     opacity: 1;
-    margin-top: 2rem;
     background-color: #fff;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.page4_box-2-btn-1:hover,
+.page4_box-2-btn-2:hover {
+    transform: scale(1.05);
 }
 
 .page4_hide {
@@ -76,61 +81,41 @@ body {
     height: 50%;
 }
 
-.page4_content-page2 {
-    width: auto;
-    height: auto;
-    margin-top: 4rem;
-    margin-left: 2rem;
-    display: flexbox;
-    align-items: center;
-    align-content: center;
-}
-
-.page4_content-page2 h5 {
-    width: auto;
-    height: auto;
-    font-size: 3vw;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.page4_content-page2 h3 {
-    width: auto;
-    height: auto;
-    font-size: 1.5vw;
-    font-weight: 200;
-    color: #ffffff;
-    margin-top: 0.5rem;
-}
-
-.page4_btn-3 button {
-    position: absolute;
-    z-index: 2;
-    width: 6.5vw;
-    height: 6.5vw;
-    background-color: #A57FC0;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.fi_btn {
-    width: 4vw;
-    height: 4vw;
-    color: #ffffff;
-    margin-block: auto;
-    border: none;
-    box-shadow: 8px 3px 4px 0px #a57fc0;
-    border-radius: 100%;
-}
-
 .page4_btn-3 {
-    height: 30vh;
-    width: 100vw;
+    height: 40vh;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: clamp(1rem, 3vh, 2.5rem);
+    flex: 1;
+}
+
+.page4_btn-3 button {
+    position: absolute;
+    z-index: 5;
+    width: clamp(55px, 6.5vw, 90px);
+    height: clamp(55px, 6.5vw, 90px);
+    background-color: #A57FC0;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.page4_btn-3 button:hover {
+    transform: scale(1.08);
+}
+
+.fi_btn {
+    width: 55%;
+    height: 55%;
+    color: #ffffff;
 }
 
 .media {
@@ -138,165 +123,45 @@ body {
     z-index: 1;
     width: 348px;
     height: 323px;
-    margin-top: 0em;
-    margin-left: 1.8em;
+    margin-top: 0;
 }
 
-
-.media1 {
+.media1, .media2, .media3, .media4, .media5 {
     position: absolute;
-    width: 6vw;
-    height: 6vw;
-    margin-left: 119px;
-    margin-top: 122px;
+    width: clamp(50px, 6vw, 85px);
+    height: clamp(50px, 6vw, 85px);
     border-radius: 100%;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.media1 img {
-    width: 6vw;
-    height: 6vw;
-}
-
-.media2 {
-    position: absolute;
-    width: 6vw;
-    height: 6vw;
-    margin-left: 119px;
-    margin-top: 122px;
+.media1 img, .media2 img, .media3 img, .media4 img, .media5 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 100%;
-    border: none;
-    cursor: pointer;
 }
 
-.media2 img {
-    width: 6vw;
-    height: 6vw;
-}
-
-.media3 {
-    position: absolute;
-    width: 6vw;
-    height: 6vw;
-    margin-left: 119px;
-    margin-top: 122px;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.media3 img {
-    width: 6vw;
-    height: 6vw;
-}
-
-.media4 {
-    position: absolute;
-    width: 6vw;
-    height: 6vw;
-    margin-left: 119px;
-    margin-top: 122px;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.media4 img {
-    width: 6vw;
-    height: 6vw;
-}
-
-.media5 {
-    position: absolute;
-    width: 6vw;
-    height: 6vw;
-    margin-left: 119px;
-    margin-top: 122px;
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.media5 img {
-    width: 6vw;
-    height: 6vw;
-}
-
+/* Media queries for small screens */
 @media (max-width: 768px) {
-
-
-    .page4_box-2 h5 {
-        font-size: 5vw;
+    .page4_box-2 {
+        margin-top: 80px;
+        padding: 0 3%;
     }
 
-    .page4_box-2-btn-1,
-    .page4_box-2-btn-2 {
-        width: 10vw;
-        height: 10vw;
+    .page4_btn-3 {
+        margin-top: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-
     .page4_box-2 {
-        margin-top: 8em;
-    }
-
-    .page4_box-2 h5 {
-        font-size: 7vw;
-    }
-
-    .page4_content-page2 h5 {
-        font-size: 7vw;
-    }
-
-    .page4_content-page2 h3 {
-        font-size: 6vw;
-    }
-
-    .page4_box-2-btn-1 {
-        width: 50px;
-        height: 50px;
-        margin-left: 5px;
-    }
-
-    .page4_box-2-btn-2 {
-        width: 50px;
-        height: 50px;
-        margin-right: 5px;
+        margin-top: 75px;
     }
 
     .page4_btn-3 button {
-        width: 20.5vw;
-        height: 20.5vw;
-        justify-content: center;
-        align-items: center;
+        width: 60px;
+        height: 60px;
     }
-    .fi_btn {
-    width: 10vw;
-    height: 10vw;
-}
-.page4_btn-3{
-    margin-top: 2em;
-    margin-left: 0.8em;
-}
-
-    .media1,
-    .media2,
-    .media3,
-    .media4,
-    .media5 {
-        width: 19vw;
-        height: 19vw;
-    }
-    .media1 img,
-    .media2 img,
-    .media3 img,
-    .media4 img,
-    .media5 img {
-        width: 19vw;
-        height: 19vw;
-    }
-
 }

@@ -4,7 +4,8 @@ import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
-const page5 = (() => {
+
+const page6 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
     const [collectionOut, setcollectionOut] = useState(false);
@@ -32,21 +33,22 @@ const page5 = (() => {
             </div>
             <div className="page6_box-2">
                 <motion.button className="page6_box-2-btn-1"
+                    aria-label="Previous Page"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={handleClick}>
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
                 <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
+                    initial={{ y: -50, opacity: 0 }}
                     animate={{
-                        y: "5em",
+                        y: 0,
                         opacity: animateOut ? 0 : 1
                     }}
-                    transition={{ duration: 1.5 }}>
+                    transition={{ duration: 1 }}>
                     My Toolbox
                 </motion.h5>
-                <motion.button className="page6_box-2-btn-2" initial={{ opacity: 0 }}
+                <motion.button className="page6_box-2-btn-2" aria-label="Next Page" initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={nextClick} ><FaAngleRight className='btn-content' /></motion.button>
             </div>
@@ -59,20 +61,17 @@ const page5 = (() => {
             <div className="page6_tool_box">
                 <div className="page6_tool_box_1">
                     <div className='page6_up'>
-                        <div className='page6_up_1'><img src="/images/backend.jpeg" alt="" /></div>
+                        <div className='page6_up_1'><img src="/images/backend.jpeg" alt="Backend Stack" width="65" height="65" /></div>
                         <div className='page6_up_2'>Node.js, Express.js, MongoDB And Python</div>
                     </div>
                     <div className='page6_down'> <h3>Fueling the backend magic.</h3></div>
                 </div>
                 <div className="page6_tool_box_2">
                     <div className='page6_up2'>
-                        <div className='page6_up2_1'><img src="/images/Ellipse 57.png" alt="" /></div>
+                        <div className='page6_up2_1'><img src="/images/Ellipse 57.png" alt="Frontend Stack" width="65" height="65" /></div>
                         <div className='page6_up2_2'>React.js, HTML5, CSS, JavaScript, Tailwind CSS</div>
                     </div>
-                    <div className='page6_down2'> <h3>Crafting pixel-perfect frontend
-                        experiences.
-                    </h3></div>
-
+                    <div className='page6_down2'> <h3>Crafting pixel-perfect frontend experiences.</h3></div>
                 </div>
             </div>
 
@@ -80,4 +79,4 @@ const page5 = (() => {
     )
 })
 
-export default page5
+export default page6

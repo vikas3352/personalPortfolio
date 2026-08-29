@@ -4,6 +4,7 @@ import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
+
 const page5 = (() => {
 
     const [animateOut, setAnimateOut] = useState(false);
@@ -32,21 +33,22 @@ const page5 = (() => {
             </div>
             <div className="page5_box-2">
                 <motion.button className="page5_box-2-btn-1"
+                    aria-label="Previous Page"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={handleClick}>
                     <FaAngleLeft className='btn-content' />
                 </motion.button>
                 <motion.h5
-                    initial={{ y: -100, opacity: 1 }}
+                    initial={{ y: -50, opacity: 0 }}
                     animate={{
-                        y: "5em",
+                        y: 0,
                         opacity: animateOut ? 0 : 1
                     }}
-                    transition={{ duration: 1.5 }}>
+                    transition={{ duration: 1 }}>
                     My Toolbox
                 </motion.h5>
-                <motion.button className="page5_box-2-btn-2" initial={{ opacity: 0 }}
+                <motion.button className="page5_box-2-btn-2" aria-label="Next Page" initial={{ opacity: 0 }}
                     animate={{ opacity: animateOut ? 0 : 1 }}
                     transition={{ duration: 0.5 }} onClick={nextClick} ><FaAngleRight className='btn-content' /></motion.button>
             </div>
@@ -59,20 +61,17 @@ const page5 = (() => {
             <div className="tool_box">
                 <div className="tool_box_1">
                     <div className='up'>
-                        <div className='up_1'><img src="/images/Ellipse 56.png" alt="" /></div>
+                        <div className='up_1'><img src="/images/Ellipse 56.png" alt="Figma Icon" width="65" height="65" /></div>
                         <div className='up_2'>Figma</div>
                     </div>
                     <div className='down'> <h3>Where ideas come to life collaboratively.</h3></div>
                 </div>
                 <div className="tool_box_2">
                     <div className='up2'>
-                        <div className='up2_1'><img src="/images/Ellipse 56.png" alt="" /></div>
+                        <div className='up2_1'><img src="/images/Ellipse 56.png" alt="Adobe Creative Suite Icon" width="65" height="65" /></div>
                         <div className='up2_2'>Adobe Creative Suite</div>
                     </div>
-                    <div className='down2'> <h3>Harnessing the power of Photoshop
-                        and Illustrator.
-                    </h3></div>
-
+                    <div className='down2'> <h3>Harnessing the power of Photoshop and Illustrator.</h3></div>
                 </div>
             </div>
 
