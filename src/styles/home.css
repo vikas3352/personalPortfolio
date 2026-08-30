@@ -8,7 +8,9 @@ html,
 body {
     height: 100%;
     width: 100%;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", system-ui, -apple-system, sans-serif;
+    background-color: #363636;
+    color: #ffffff;
 }
 
 .main-box {
@@ -30,7 +32,7 @@ body {
 
 .main-box-right {
     width: 59%;
-    flex: 1;
+    height: 100%;
     position: absolute;
     z-index: 2;
     padding: clamp(100px, 12vh, 150px) 5% 4% 5%;
@@ -39,54 +41,96 @@ body {
     justify-content: center;
 }
 
-.main-box-right h1,
-.main-box-right h5 {
-    margin-top: 4rem;
-    font-size: clamp(3.8rem, 7.5vw, 7.5rem);
+.hero-name {
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
     font-weight: 800;
-    color: #ffffff;
-    max-width: 90%;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.main-box-right h3 {
-    font-size: clamp(1.1rem, 2vw, 2rem);
-    font-weight: 200;
+.hero-subtitle {
+    font-size: clamp(0.85rem, 1.35vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-subtitle .divider {
+    font-weight: 700;
+    background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.hero-description {
+    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+    font-weight: 300;
     color: #ffffff;
-    max-width: 90%;
-    margin-top: 2rem;
-    line-height: 1.5;
+    max-width: 580px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
 }
 
 .btn-1 {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 3rem;
 }
 
 .btn-1 button {
-    width: clamp(60px, 6vw, 80px);
-    height: clamp(60px, 6vw, 80px);
-    border-radius: 50%;
+    padding: 14px 28px;
+    border-radius: 40px;
     border: none;
     background-color: #ffffff;
+    color: #363636;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4), 0 0 15px rgba(168, 85, 247, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-1 button:hover {
     transform: scale(1.05);
+    background-color: #ffffff;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6), 0 0 25px rgba(168, 85, 247, 0.5);
+}
+
+.btn-1 button:active {
+    transform: scale(0.98);
+}
+
+.btn-label {
+    letter-spacing: 0.02em;
 }
 
 .btn-content {
-    width: 50%;
-    height: 50%;
+    width: 18px;
+    height: 18px;
     color: #363636;
+    transition: transform 0.3s ease;
+}
+
+.btn-1 button:hover .btn-content {
+    transform: translateX(4px);
 }
 
 .main-box-left {
@@ -131,13 +175,14 @@ body {
         align-items: center;
     }
 
-    .main-box-right h1,
-    .main-box-right h5 {
-        margin-top: 2rem;
+    .hero-subtitle {
+        justify-content: center;
+        max-width: 100%;
     }
 
-    .main-box-right h3 {
+    .hero-description {
         max-width: 100%;
+        margin-bottom: 2rem;
     }
 
     .btn-1 {
@@ -172,14 +217,17 @@ body {
         padding: 90px 5% 15px 5%;
     }
 
-    .main-box-right h1,
-    .main-box-right h5 {
-        margin-top: 3rem;
-        font-size: clamp(2.8rem, 9vw, 4.5rem);
+    .hero-name {
+        font-size: clamp(2.5rem, 9vw, 4rem);
     }
 
-    .main-box-right h3 {
-        font-size: clamp(1rem, 3.5vw, 1.3rem);
+    .hero-subtitle {
+        font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+        justify-content: center;
+    }
+
+    .hero-description {
+        font-size: clamp(0.9rem, 3vw, 1.05rem);
     }
 
     .main-box-left {
@@ -193,14 +241,8 @@ body {
         padding: 85px 4% 10px 4%;
     }
 
-    .main-box-right h1,
-    .main-box-right h5 {
-        margin-top: 3.5rem;
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
-    }
-
-    .main-box-right h3 {
-        font-size: 1rem;
+    .hero-name {
+        font-size: clamp(2.2rem, 10vw, 3rem);
     }
 
     .main-box-left {

@@ -98,8 +98,8 @@ const page2 = (() => {
       <motion.div className='content-page2'
         animate={{ opacity: isHovered ? 0 : 1 }}
         transition={{ duration: 1 }}>
-        <h5>Captivating Projects</h5>
-        <h3>Explore a collection of projects that tell unique design and development.</h3>
+        <h5>Featured Projects</h5>
+        <h3>A selection of web applications and software solutions I’ve built using modern frontend, backend, database, API, AI, and real-time technologies.</h3>
       </motion.div>
       {width > 768 && (
         <motion.div className="collection"

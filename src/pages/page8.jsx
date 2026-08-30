@@ -36,12 +36,12 @@ const page8 = (() => {
                         opacity: animateOut ? 0 : 1
                     }}
                     transition={{ duration: 1 }}>
-                    Let's Create Something Amazing!
+                    Have a Project in Mind?
                 </motion.h5>
             </div>
             <div className="page8_contant">
                 <div className="page8_tool_box">
-                    <p>Embark on a visual journey with me. Whether you're looking for stunning designs or cutting-edge web solutions, I'm here to bring your ideas to life. Let's build something extraordinary together!</p>
+                    <p>Whether you need a business website, e-commerce platform, booking system, custom web application, API, or AI-powered solution, I can help turn your idea into a reliable digital product. Based in Alwar, Rajasthan, I work with businesses and clients across Rajasthan and India.</p>
                 </div>
             </div>
 
