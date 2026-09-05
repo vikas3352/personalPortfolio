@@ -1,15 +1,12 @@
 import { React, useState, useEffect } from 'react'
 import "../styles/page2.css";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft, FaPlay } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import Sidebar from './navebar';
 
 const page2 = (() => {
-
   const [animateOut, setAnimateOut] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [videoPopup, setVideoPopup] = useState({ visible: false, src: null });
   const navigate = useNavigate();
 
@@ -24,28 +21,33 @@ const page2 = (() => {
   }
   const width = useWindowSize();
 
-  const handleClick = () => {
+  const handlePrevPage = () => {
     setAnimateOut(true);
     setTimeout(() => {
       navigate("/");
-    }, 1000);
+    }, 500);
   };
 
-  const btn2Click = () => {
+  const handleNextPage = () => {
     setAnimateOut(true);
     setTimeout(() => {
       navigate("/Page3");
-    }, 1000);
+    }, 500);
   };
 
-  const handleCollectionClick = (clickedIndex) => {
-    if (clickedIndex === 0) return; // Already front
+  const [items, setItems] = useState([
+    { id: 1, title: "E-Commerce Web Application", type: "Client & Freelance Project", tech: "React.js · Node.js · Express.js · MongoDB", src: '/images/nike_image.png', video: '/videos/video1.mp4' },
+    { id: 2, title: "Hospital Management & Booking System", type: "Web Application Project", tech: "React.js · Node.js · REST APIs · MongoDB", src: '/images/hospital.jpg', video: '/videos/hospital_management.mp4' },
+    { id: 3, title: "Developer Portfolio & API Services", type: "Full-Stack Project", tech: "React.js · Express.js · Node.js · REST APIs", src: '/images/backend.jpeg', video: '/videos/personal_portfolio.mp4' },
+    { id: 4, title: "Student ERP & Admin Management System", type: "Client Project for Rizeworld / Alwar", tech: "MERN Stack · MongoDB · Express.js · React.js · Node.js", src: '/images/student__erp.png', video: '/videos/video4.mp4' },
+  ]);
 
-    const newItems = [...items];
-    const clickedItem = newItems.splice(clickedIndex, 1)[0];
-    newItems.unshift(clickedItem); // Bring clicked image to front
-    setItems(newItems);
-    setActiveIndex(0);
+  const handleCardClick = (clickedIndex) => {
+    if (clickedIndex === 0) return;
+    setItems((prevItems) => [
+      ...prevItems.slice(clickedIndex),
+      ...prevItems.slice(0, clickedIndex),
+    ]);
   };
 
   const handleVideoPlay = (src) => {
@@ -56,12 +58,38 @@ const page2 = (() => {
     setVideoPopup({ visible: false, src: null });
   };
 
-  const [items, setItems] = useState([
-    { src: '/images/nike_image.png', video: '/videos/video1.mp4' },
-    { src: '/images/hospital.jpg', video: '/videos/hospital_management.mp4' },
-    { src: '/images/backend.jpeg', video: '/videos/personal_portfolio.mp4' },
-    { src: '/images/student__erp.png', video: '/videos/video4.mp4' },
-  ]);
+  useEffect(() => {
+    document.title = "Web Development Projects in Alwar, Rajasthan | Full-Stack Developer";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        'Explore web development projects, client websites, freelance work, MERN applications, e-commerce platforms, booking systems, and custom web applications built by a Full-Stack Developer in Alwar, Rajasthan.'
+      );
+    }
+  }, []);
+
+  // Fanned Card Stack layout opening Right-to-Left:
+  // Card 0 (frontmost, active): Top-right, fully visible (zIndex 10)
+  // Cards 1, 2, 3: Stacked behind, stepping left (-X) and slightly down (+Y) with negative rotation
+  const getCardTransform = (index) => {
+    const isMobile = width <= 768;
+    const stepX = isMobile ? 38 : 60;
+    const stepY = isMobile ? 6 : 10;
+    const stepRotate = isMobile ? 1.5 : 2.5;
+
+    const baseX = 85 - (index * stepX);
+    const baseY = index * stepY;
+    const rotate = -1 * index * stepRotate;
+
+    return {
+      x: isMobile ? 50 - (index * 32) : baseX,
+      y: baseY,
+      rotate: rotate,
+      scale: 1 - (index * 0.02),
+      opacity: animateOut ? 0 : 1,
+    };
+  };
 
   return (
     <div className='box'>
@@ -69,82 +97,100 @@ const page2 = (() => {
         <Sidebar />
       </div>
 
+      {/* Headline & Page Navigation Arrow Controls (Matching Page3) */}
       <div className="box-2">
         <motion.button className="box-2-btn-1"
           aria-label="Previous Page"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 0 : 1 }}
+          animate={{ opacity: animateOut ? 0 : 1 }}
           transition={{ duration: 0.5 }}
-          onClick={handleClick}>
+          onClick={handlePrevPage}>
           <FaAngleLeft className='btn-content' />
         </motion.button>
 
         <motion.h5
           initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, x: isHovered ? -300 : 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-        >WEB Developer</motion.h5>
+          animate={{
+            y: 0,
+            opacity: animateOut ? 0 : 1
+          }}
+          transition={{ duration: 0.6 }}
+        >Web Development Projects & Client Work</motion.h5>
 
         <motion.button className="box-2-btn-2"
           aria-label="Next Page"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 0 : 1 }}
+          animate={{ opacity: animateOut ? 0 : 1 }}
           transition={{ duration: 0.5 }}
-          onClick={btn2Click}>
+          onClick={handleNextPage}>
           <FaAngleRight className='btn-content' />
         </motion.button>
       </div>
 
-      <motion.div className='content-page2'
-        animate={{ opacity: isHovered ? 0 : 1 }}
-        transition={{ duration: 1 }}>
-        <h5>Featured Projects</h5>
-        <h3>A selection of web applications and software solutions I’ve built using modern frontend, backend, database, API, AI, and real-time technologies.</h3>
-      </motion.div>
-      {width > 768 && (
-        <motion.div className="collection"
-          initial={{ y: 400, opacity: 1 }}
-          animate={{ y: isHovered ? -120 : 0, x: isHovered ? 120 : 0, scale: isHovered ? 1.3 : 1, opacity: 1 }}
-          transition={{ duration: 1 }}>
-
-          {items.map((item, index) => (
+      <div className="page2-main-container">
+        {/* Left Side Active Project Description */}
+        <motion.div className='page2-left-content'
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}>
+          <AnimatePresence mode="wait">
             <motion.div
-              key={index}
-              className={`collection${index + 1}`}
-              onClick={() => handleCollectionClick(index)}
-              style={{ position: 'absolute', cursor: 'pointer', zIndex: 10 - index }}>
-              <img src={item.src} alt="Project Preview" width="300" height="300" />
-              <button className='play-btn' aria-label="Play Project Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
+              key={items[0].id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="project-badge">{items[0].type}</span>
+              <h5>{items[0].title}</h5>
+              <p className="project-tech">{items[0].tech}</p>
+              <h3>Explore the websites, web applications, and digital solutions I’ve built through personal projects, freelance work, and client collaborations for Rizeworld and businesses in Alwar, Rajasthan.</h3>
             </motion.div>
-          ))}
+          </AnimatePresence>
         </motion.div>
-      )}
-      {width <= 768 && (
-        <motion.div className="collection"
-          initial={{ y: 200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}>
 
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              className={`collection${index + 1}`}
-              onClick={() => handleCollectionClick(index)}
-              style={{ cursor: 'pointer' }}>
-              <img src={item.src} alt="Project Preview" width="300" height="300" />
-              <button className='play-btn' aria-label="Play Project Video" onClick={(e) => { e.stopPropagation(); handleVideoPlay(item.video); }}>▶</button>
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
+        {/* Right Side Stacked Card Deck (Logos.png style) */}
+        <div className="page2-right-projects">
+          <div className="collection-container">
+            <AnimatePresence initial={false}>
+              {items.map((item, index) => {
+                const isFront = index === 0;
+                const anim = getCardTransform(index);
 
-      <div className={`box-1 ${isHovered ? 'hovered' : ''}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
-        <motion.img src="/images/Saly-12.webp" alt="3D Graphic Illustration" width="1000" height="1000"
-          initial={{ scale: 1, x: 0, opacity: 1 }}
-          animate={animateOut ? { scale: 2, x: -500, opacity: 0 } : isHovered ? { x: -120, y: -220 } : {}}
-          transition={{ duration: 1 }} />
+                return (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    style={{ zIndex: 10 - index }}
+                    className={`collection-card ${isFront ? 'card-front' : 'card-stacked'}`}
+                    onClick={() => handleCardClick(index)}
+                    initial={false}
+                    animate={anim}
+                    transition={{
+                      type: "spring",
+                      stiffness: 240,
+                      damping: 24,
+                    }}
+                  >
+                    <img src={item.src} alt={`${item.title} - ${item.type}`} width="300" height="300" />
+                    {isFront && (
+                      <button
+                        className='play-btn'
+                        aria-label={`Play ${item.title} Video`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleVideoPlay(item.video);
+                        }}
+                      >
+                        <FaPlay className="play-icon" />
+                      </button>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
       {videoPopup.visible && (
@@ -163,3 +209,6 @@ const page2 = (() => {
 })
 
 export default page2
+
+
+
